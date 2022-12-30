@@ -5,10 +5,10 @@ using UnityEngine;
 public class SnowManMovement : MonoBehaviour
 {
     public Rigidbody2D MyRigidBody;
-    public Vector2 movementDirection;
+    Vector2 movementDirection;
     public float movementSpeed;
     public Animator animator;
-    public Vector2 movement;
+    Vector2 movement;
 
 
     // Start is called before the first frame update
@@ -20,18 +20,21 @@ public class SnowManMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float hMove = Input.GetAxisRaw("Horizontal");
+        float vMove = Input.GetAxisRaw("Vertical");
 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.magnitude);
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
+
+        //adjusted this to have simpler values instead of getting input twice
+        animator.SetFloat("Horizontal", hMove);
+        animator.SetFloat("Vertical", vMove);
+        animator.SetFloat("Speed", movementSpeed);
 
 
 
 
-        ProcessInputs();
-        Move();
+        ProcessMovement(hMove, vMove);
     }
     void FixedUpdate()
     {
@@ -39,14 +42,13 @@ public class SnowManMovement : MonoBehaviour
     }
 
 
-    void ProcessInputs()
+    void ProcessMovement(float hMove, float vMove)
     {
-        movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        //establish movement direction
+        movementDirection = new Vector2(hMove, vMove);
         movementDirection.Normalize();
-    }
-    
-    void Move()
-    {
+
+        //apply velocity
         MyRigidBody.velocity = movementDirection * movementSpeed;
     }
 

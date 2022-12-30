@@ -81,14 +81,16 @@ public class SnowBallThrowing : MonoBehaviour
         {
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown);
-            Destroy(snowballUpAndDown, snowDisappear);
+            snowballUpAndDown.GetComponent<SnowballLogic>().throwTimer = snowDisappear;
+            //Destroy(snowballUpAndDown, snowDisappear);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isDown)
         {
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown * -1f);
-            Destroy(snowballUpAndDown, snowDisappear);
+            snowballUpAndDown.GetComponent<SnowballLogic>().throwTimer = snowDisappear;
+            //Destroy(snowballUpAndDown, snowDisappear);
         }
 
     }
