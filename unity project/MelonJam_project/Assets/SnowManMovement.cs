@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SnowManMovement : MonoBehaviour
 {
-
+    public float moveSpeed;
     private float moveHorizontal;
     private float moveVertical;
-    public Rigidbody2D MyRigidBody;
 
 
     // Start is called before the first frame update
@@ -21,20 +20,14 @@ public class SnowManMovement : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+       
+        
+        transform.position = transform.position + new Vector3(moveHorizontal * moveSpeed * Time.deltaTime, moveVertical * moveSpeed * Time.deltaTime, 0);
+        
     }
 
     void FixedUpdate()
     {
-        if (moveHorizontal > 0.1f || moveHorizontal < -.01f)
-        {
-            MyRigidBody.AddForce(new Vector2(moveHorizontal, 0f), ForceMode2D.Impulse);
-
-        }
-        if (moveVertical > 0.1f || moveVertical < -0.1f)
-        {
-
-            MyRigidBody.AddForce(new Vector2(0f, moveVertical), ForceMode2D.Impulse);
-        }
-
+        
     }
 }
