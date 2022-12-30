@@ -18,12 +18,13 @@ public class SnowManMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //movement processing
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
-       
-        
         transform.position = transform.position + new Vector3(moveHorizontal * moveSpeed * Time.deltaTime, moveVertical * moveSpeed * Time.deltaTime, 0);
         
+
     }
 
     void FixedUpdate()
