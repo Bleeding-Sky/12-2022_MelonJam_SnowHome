@@ -5,15 +5,35 @@ using UnityEngine;
 
 public class DepthSort : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float sortingOrderBase = 500;
+    [SerializeField]
+    private float offset = 0;
+    [SerializeField]
+    private bool runOnlyOnce = false;
+
+    private float timer;
+    private float timerMax = .1f;
+    private Renderer myRenderer;
+
 
     // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, -transform.position.y);
+        myRenderer = gameObject.GetComponent<Renderer>();
+    }
+
+   private void LateUpdate()
+    {
+        timer -= Time.deltaTime;
+        if(timer <= 0f)
+        {
+            timer = timerMax;
+            myRenderer.sortingOrder = (int)(sortingOrderBase - transform.position.y - offset);
+            if (runOnlyOnce)
+            {
+                Destroy(this);
+            }
+        }
     }
 }
