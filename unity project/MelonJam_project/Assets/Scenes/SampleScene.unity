@@ -372,6 +372,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b98a6bd028f864baaa35a8eb16349f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snowPrefab: {fileID: 5789910539311496222, guid: 7ca44f0b1c01f9349a80ea30164244c7, type: 3}
+  snowPrefabUpandDown: {fileID: 5391219539721801885, guid: 4d94db8a4bce5ae47a569158f9bc2a39, type: 3}
+  snowVelocityinXdirectionLeftAndRight: 2
+  snowVelocityinYdirectionLeftAndRight: 2
+  snowVelocityinUpandDown: 1.5
+  snowDisappear: 0.85
+  horizontalDirection: 0
+  verticalDirection: 0
+  isRight: 0
+  isLeft: 0
+  isUp: 0
+  isDown: 0
 --- !u!1 &2023361353
 GameObject:
   m_ObjectHideFlags: 0
