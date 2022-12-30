@@ -245,6 +245,8 @@ MonoBehaviour:
   MyRigidBody: {fileID: 1514291194}
   movementDirection: {x: 0, y: 0}
   movementSpeed: 1.4
+  animator: {fileID: 1514291198}
+  movement: {x: 0, y: 0}
 --- !u!212 &1514291191
 SpriteRenderer:
   m_ObjectHideFlags: 0

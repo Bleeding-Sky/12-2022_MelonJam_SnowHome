@@ -7,6 +7,8 @@ public class SnowManMovement : MonoBehaviour
     public Rigidbody2D MyRigidBody;
     public Vector2 movementDirection;
     public float movementSpeed;
+    public Animator animator;
+    public Vector2 movement;
 
 
     // Start is called before the first frame update
@@ -18,6 +20,16 @@ public class SnowManMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.magnitude);
+
+
+
+
         ProcessInputs();
         Move();
     }
