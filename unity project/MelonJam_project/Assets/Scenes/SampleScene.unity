@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 1514291191}
   - component: {fileID: 1514291190}
   - component: {fileID: 1514291193}
+  - component: {fileID: 1514291194}
   m_Layer: 0
   m_Name: SnowFella
   m_TagString: Untagged
@@ -239,6 +240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  MyRigidBody: {fileID: 1514291194}
+  movementDirection: {x: 0, y: 0}
+  movementSpeed: 0
 --- !u!212 &1514291191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -304,7 +308,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1514291193
 BoxCollider2D:
@@ -332,6 +336,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.03}
   m_EdgeRadius: 0
+--- !u!50 &1514291194
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514291188}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2023361353
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +368,7 @@ GameObject:
   - component: {fileID: 2023361356}
   - component: {fileID: 2023361355}
   - component: {fileID: 2023361354}
+  - component: {fileID: 2023361357}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -441,5 +467,26 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2023361357
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023361353}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
