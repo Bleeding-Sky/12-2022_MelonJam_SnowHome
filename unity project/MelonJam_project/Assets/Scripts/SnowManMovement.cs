@@ -23,13 +23,21 @@ public class SnowManMovement : MonoBehaviour
         float hMove = Input.GetAxisRaw("Horizontal");
         float vMove = Input.GetAxisRaw("Vertical");
 
-        //movement.x = Input.GetAxisRaw("Horizontal");
-        //movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         //adjusted this to have simpler values instead of getting input twice
         animator.SetFloat("Horizontal", hMove);
         animator.SetFloat("Vertical", vMove);
-        animator.SetFloat("Speed", movementSpeed);
+
+        if(hMove == 0 && vMove == 0)
+        {
+            animator.SetFloat("Speed", -1f);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 1f);
+        }
 
 
 
