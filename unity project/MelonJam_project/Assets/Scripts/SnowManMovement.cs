@@ -8,7 +8,6 @@ public class SnowManMovement : MonoBehaviour
     Vector2 movementDirection;
     public float movementSpeed;
     public Animator animator;
-    Vector2 movement;
 
 
     // Start is called before the first frame update
@@ -23,20 +22,45 @@ public class SnowManMovement : MonoBehaviour
         float hMove = Input.GetAxisRaw("Horizontal");
         float vMove = Input.GetAxisRaw("Vertical");
 
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        //calculate direction
+        /*
+         * 0 = up
+         * 1 = right
+         * 2 = down
+         * 3 = left
+         */
 
-        //adjusted this to have simpler values instead of getting input twice
+        //right
+        if(hMove == 1)
+        {
+            animator.SetInteger("Direction", 1);
+        }
+        //left
+        else if (hMove == -1)
+        {
+            animator.SetInteger("Direction", 3);
+        }
+        //up
+        else if (vMove == 1)
+        {
+            animator.SetInteger("Direction", 0);
+        }
+        //down
+        else if (vMove == -1)
+        {
+            animator.SetInteger("Direction", 2);
+        }
+
         animator.SetFloat("Horizontal", hMove);
         animator.SetFloat("Vertical", vMove);
 
         if(hMove == 0 && vMove == 0)
         {
-            animator.SetFloat("Speed", -1f);
+            animator.SetBool("isMoving", false);
         }
         else
         {
-            animator.SetFloat("Speed", 1f);
+            animator.SetBool("isMoving", true);
         }
 
 
