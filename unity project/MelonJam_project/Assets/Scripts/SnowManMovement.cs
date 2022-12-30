@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class SnowManMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    private float moveHorizontal;
-    private float moveVertical;
     public Rigidbody2D MyRigidBody;
     public Vector2 movementDirection;
     public float movementSpeed;
-    
-  
 
 
     // Start is called before the first frame update
@@ -23,7 +18,6 @@ public class SnowManMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         ProcessInputs();
         Move();
     }
@@ -35,8 +29,7 @@ public class SnowManMovement : MonoBehaviour
 
     void ProcessInputs()
     {
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        movementSpeed = movementDirection.magnitude;
+        movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         movementDirection.Normalize();
     }
     
