@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 1514291196}
   - component: {fileID: 1514291199}
   - component: {fileID: 1514291198}
+  - component: {fileID: 1514291200}
   m_Layer: 0
   m_Name: SnowFella
   m_TagString: Untagged
@@ -683,8 +684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3000323c697815147a9c9e079fb30bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedMovement: 0
-  GetSnowManMovement: {fileID: 0}
+  waypoints: []
+  moveSpeed: 2
 --- !u!114 &1514291197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,6 +745,22 @@ MonoBehaviour:
   sortingOrderBase: 500
   offset: 0
   runOnlyOnce: 0
+--- !u!58 &1514291200
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514291188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.1}
+  serializedVersion: 2
+  m_Radius: 0.35
 --- !u!1 &2023361353
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +913,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000057652593, y: -0.01}
-  m_Size: {x: 0.21, y: 0.06}
+  m_Offset: {x: -0.0065298094, y: -0.0034125815}
+  m_Size: {x: 0.26533484, y: 0.0731751}
   m_Direction: 1
