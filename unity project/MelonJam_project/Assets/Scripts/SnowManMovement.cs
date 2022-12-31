@@ -83,8 +83,17 @@ public class SnowManMovement : MonoBehaviour
         {
             animator.SetBool("isGathering", false);
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Shake!");
+            Invoke("Shake", 1);
 
-        
+        }
+        else
+        {
+            animator.SetBool("isShaking", false);
+        }
+
 
 
         ProcessMovement(hMove, vMove);
@@ -115,7 +124,7 @@ public class SnowManMovement : MonoBehaviour
             {
 
                 Debug.Log("Roll!");
-                canMove = false;
+                //canMove = false;
                 Invoke("stopmovement", stopTimer);
                    
                 animator.SetInteger("isRolling", 1);
@@ -133,6 +142,11 @@ public class SnowManMovement : MonoBehaviour
     public void Gather()
     {
         animator.SetBool("isGathering", true);
+    }
+
+    public void Shake()
+    {
+        animator.SetBool("isShaking", true);
     }
 
 }
