@@ -500,6 +500,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: SnowFella
       objectReference: {fileID: 0}
+    - target: {fileID: 5105336505809596607, guid: 7b147ed7e2e1c51418d62c48955af086, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b147ed7e2e1c51418d62c48955af086, type: 3}
 --- !u!1001 &6730674049762430557
