@@ -16,6 +16,8 @@ public class SnowManMovement : MonoBehaviour
     public float rollSpeedY;
     public float rollSpeedX;
     public GameObject SnowFella;
+    public GameObject Tree;
+    public bool isVisible;
 
 
 
@@ -23,6 +25,7 @@ public class SnowManMovement : MonoBehaviour
     void Start()
     {
         canMove = true;
+        isVisible = true;
     }
 
     // Update is called once per frame
@@ -119,24 +122,22 @@ public class SnowManMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("RollingTrigger"))
         {
-            if (collision.gameObject.CompareTag("RollingTrigger"))
-            {
+            Debug.Log("Roll!");
+            SnowFella.transform.position = new Vector2(Tree.transform.position.x + .1f, Tree.transform.position.y - .05f);
+            canMove = false;
+            isVisible = false;
+            MyRigidBody.velocity = new Vector2(0,0);
+            Invoke("beginMovement", 8);
 
-                Debug.Log("Roll!");
-                //canMove = false;
-                Invoke("stopmovement", stopTimer);
-                   
-                animator.SetInteger("isRolling", 1);
-                //MyRigidBody.velocity = new Vector3(rollSpeedX, rollSpeedY, 0);
-            }
-        
-
-        
+        }
     }
-    public void stopmovement()
+    public void beginMovement()
     {
         canMove = true;
+        isVisible = true;
     }
 
     public void Gather()
@@ -148,5 +149,7 @@ public class SnowManMovement : MonoBehaviour
     {
         animator.SetBool("isShaking", true);
     }
+    
 
 }
+
