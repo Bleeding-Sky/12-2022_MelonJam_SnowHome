@@ -23,6 +23,7 @@ public class LogScript : MonoBehaviour
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
 
             Invoke("Visible", 3.25f);
+            Debug.Log("invoking visible");
             SnowMan.transform.position = new Vector2(Log.transform.position.x, Log.transform.position.y + .3f);
         }
         else
@@ -38,8 +39,8 @@ public class LogScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.Log("Going through the pipe!");
-            Invoke("GoUpLog", .01f);
+        Debug.Log("Going through the pipe!");
+        GoUpLog();
             
     }
     

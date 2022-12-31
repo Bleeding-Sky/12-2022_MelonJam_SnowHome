@@ -43,7 +43,7 @@ public class SeesawPuzzleCompletionCheck : MonoBehaviour
         {
             if (Input.GetKeyDown("e"))
             {
-                GameObject.FindGameObjectWithTag("SnowFella").GetComponent<ClothingHandler>().hasHat = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<ClothingHandler>().hasHat = true;
             }
         }
     }
@@ -51,13 +51,13 @@ public class SeesawPuzzleCompletionCheck : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //if seesaw is ready and snowfella is in the trigger
-        if (seesawReady && collision.gameObject.CompareTag("SnowFella"))
+        if (seesawReady && collision.gameObject.CompareTag("Player"))
         {
             isInteractable= true;
             
         }
         //if seesaw is not ready and snowfella is in the trigger
-        else if (!seesawReady && collision.gameObject.CompareTag("SnowFella"))
+        else if (!seesawReady && collision.gameObject.CompareTag("Player"))
         {
             seesaw.GetComponent<InteractableStateHandler>().objectState = 4;
             
@@ -67,7 +67,7 @@ public class SeesawPuzzleCompletionCheck : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         //if snowman leaves trigger, become uninteractable
-        if (collision.gameObject.CompareTag("SnowFella"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             isInteractable= false;
         }

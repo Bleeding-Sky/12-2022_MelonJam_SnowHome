@@ -44,7 +44,7 @@ public class SeesawLogic : MonoBehaviour
             if (!resetInProgress)
             {
                 resetInProgress= true;
-                GameObject player = GameObject.FindGameObjectWithTag("SnowFella");
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.transform.position = new Vector3(player.transform.position.x - .2f,
                     player.transform.position.y - .1f, player.transform.position.z);
             }
