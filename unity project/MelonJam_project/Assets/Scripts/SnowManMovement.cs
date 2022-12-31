@@ -192,7 +192,8 @@ public class SnowManMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Invisible();
+        Invisible();// making sprites invisible
+        Debug.Log("MOvement script made snowman invisible");
         if (collision.gameObject.CompareTag("RollingTrigger"))
         {
             Debug.Log("Roll!");
