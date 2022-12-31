@@ -8,6 +8,9 @@ TagManager:
   - SnowBall
   - SnowFella
   - Gutter
+  - RollingTrigger
+  - Tree
+  - possessionTrigger
   layers:
   - Default
   - TransparentFX
