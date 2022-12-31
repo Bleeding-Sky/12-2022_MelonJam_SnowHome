@@ -30,7 +30,7 @@ public class PlaceSnowInteraction : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D interactable)
     {
-        if (interactable.CompareTag("Seesaw") || interactable.CompareTag("Gutter"))
+        if (interactable.CompareTag("Seesaw") || interactable.CompareTag("Gutter") || interactable.CompareTag("possessionTrigger"))
         {
             isInInteractableRange = true;
             currentInteractable = interactable.gameObject;
