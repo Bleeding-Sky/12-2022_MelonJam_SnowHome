@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - RollingTrigger
-<<<<<<< Updated upstream
-  - SnowFella
-  - Seesaw
-=======
-  - TreeSnowTrigger
-  - SnowBall
-  - Tree
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -49,7 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: UI
-    uniqueID: 3682552327
     locked: 0
