@@ -10,6 +10,8 @@ public class SnowManMovement : MonoBehaviour
     public float movementSpeed;
     public Animator animator;
     public bool canMove;
+    public float horizontalDirection;
+    public float verticalDirection;
     public float rollTimer;
     public float stopTimer;
     Vector3 desiredPosition;
@@ -19,7 +21,8 @@ public class SnowManMovement : MonoBehaviour
     public GameObject Tree;
     public bool isVisible;
     public float SnowBallCount;
-
+    public bool isNotMoving;
+    public bool isShifting;
 
 
     // Start is called before the first frame update
@@ -27,7 +30,8 @@ public class SnowManMovement : MonoBehaviour
     {
         canMove = true;
         isVisible = true;
-        SnowBallCount = 0;
+        SnowBallCount = 4;
+        isShifting = false;
     }
 
     // Update is called once per frame
@@ -44,9 +48,19 @@ public class SnowManMovement : MonoBehaviour
          * 2 = down
          * 3 = left
          */
+        horizontalDirection = Input.GetAxisRaw("Horizontal");
+        verticalDirection = Input.GetAxisRaw("Vertical");
 
+        if (horizontalDirection == 0 && verticalDirection == 0)
+        {
+            isNotMoving = true;
+        }
+        else
+        {
+            isNotMoving = false;
+        }
         //right
-        if(hMove == 1)
+        if (hMove == 1)
         {
             animator.SetInteger("Direction", 1);
         }
@@ -78,7 +92,7 @@ public class SnowManMovement : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
 
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.X) && isNotMoving == true && isShifting == false)
         {
             if (SnowBallCount <= 8)
             {
@@ -99,13 +113,14 @@ public class SnowManMovement : MonoBehaviour
             Debug.Log(SnowBallCount);
             Debug.Log("Gather!");
             Invoke("Gather", 1);
+            Invoke("Shifting", 3f);
 
         }
         else
         {
             animator.SetBool("isGathering", false);
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && isNotMoving == true && isShifting == false)
         {
             if (SnowBallCount >= 4)
             { 
@@ -122,7 +137,7 @@ public class SnowManMovement : MonoBehaviour
                 SnowBallCount = SnowBallCount - 2;
                 Debug.Log("Shake!");
                 Invoke("Shake", 1);
-
+                Invoke("Shifting", 3f);
             }
             
         }
@@ -131,16 +146,24 @@ public class SnowManMovement : MonoBehaviour
             animator.SetBool("isShaking", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isNotMoving == true && isShifting == false)
         {
-            if (SnowBallCount >= 2)
+            if (SnowBallCount >= 4)
             {
-                SnowBallCount = SnowBallCount - 1;
+                if (SnowBallCount % 2 == 1)
+                {
+                    SnowBallCount = SnowBallCount - 1;
+                    Invoke("Shake", 0);
+                    Invoke("Shifting", 3f);
+                    Debug.Log("shrink");
+                }
+                else
+                {
+                    SnowBallCount = SnowBallCount - 1;
+                }
+
             }
-            else
-            {
-                SnowBallCount = 2;
-            }
+         
             Debug.Log(SnowBallCount);
         }
 
@@ -188,13 +211,18 @@ public class SnowManMovement : MonoBehaviour
     public void Gather()
     {
         animator.SetBool("isGathering", true);
+        isShifting = true;
     }
 
     public void Shake()
     {
         animator.SetBool("isShaking", true);
+        isShifting = true;
     }
-    
+    public void Shifting()
+    {
+        isShifting = false;
+    }
 
 }
 
