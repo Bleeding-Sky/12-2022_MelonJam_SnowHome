@@ -18,6 +18,7 @@ public class SnowManMovement : MonoBehaviour
     public GameObject SnowFella;
     public GameObject Tree;
     public bool isVisible;
+    public float SnowBallCount;
 
 
 
@@ -26,6 +27,7 @@ public class SnowManMovement : MonoBehaviour
     {
         canMove = true;
         isVisible = true;
+        SnowBallCount = 0;
     }
 
     // Update is called once per frame
@@ -78,6 +80,16 @@ public class SnowManMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.X))
         {
+            if (SnowBallCount <= 8)
+            {
+                SnowBallCount = SnowBallCount + 2;
+            }
+            else
+            {
+                SnowBallCount = 8;
+            }
+
+            Debug.Log(SnowBallCount);
             Debug.Log("Gather!");
             Invoke("Gather", 1);
 
@@ -88,16 +100,26 @@ public class SnowManMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Debug.Log("Shake!");
-            Invoke("Shake", 1);
-
+            if (SnowBallCount >= 2)
+            {
+                SnowBallCount = SnowBallCount - 2;
+                Debug.Log("Shake!");
+                Invoke("Shake", 1);
+            }
         }
         else
         {
             animator.SetBool("isShaking", false);
         }
 
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (SnowBallCount >= 1)
+            {
+                SnowBallCount = SnowBallCount - 1;
+            }
+            Debug.Log(SnowBallCount);
+        }
 
         ProcessMovement(hMove, vMove);
     }
