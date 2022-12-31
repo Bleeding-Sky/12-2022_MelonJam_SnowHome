@@ -19,6 +19,7 @@ public class SnowBallThrowing : MonoBehaviour
     public bool isDown;
     public bool isNotMoving = true;
     public float SnowBallCount;
+    public bool isShifting;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,8 @@ public class SnowBallThrowing : MonoBehaviour
         isLeft = false;
         isUp = false;
         isDown = false;
-        SnowBallCount = 2;
+        SnowBallCount = 4;
+        isShifting = false;
     }
 
     // Update is called once per frame
@@ -45,10 +47,11 @@ public class SnowBallThrowing : MonoBehaviour
             isNotMoving = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && isNotMoving == true && isShifting == false)
         {
+            isShifting = true;
 
-            if (SnowBallCount <= 10)
+            if (SnowBallCount <= 8)
             {
                 if(SnowBallCount%2==0)
                 {
@@ -60,22 +63,31 @@ public class SnowBallThrowing : MonoBehaviour
                     SnowBallCount = SnowBallCount + 3;
                     Debug.Log(SnowBallCount);
                 }
+                
             }
-            else
-            {
-                SnowBallCount = 10;
-            }
-            Debug.Log(SnowBallCount);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (SnowBallCount > 2)
-            {
-                SnowBallCount = SnowBallCount - 1;
-            }
-            else
+            else if(SnowBallCount <= 2)
             {
                 SnowBallCount = 2;
+            }
+            Debug.Log(SnowBallCount);
+            Invoke("Shifting", 3f);
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && isNotMoving == true && isShifting == false)
+        {
+            if (SnowBallCount >= 4)
+            {
+                if (SnowBallCount % 2 == 1)
+                {
+                    SnowBallCount = SnowBallCount - 1;
+                    Debug.Log("shrink");
+                    Invoke("ShiftingTrue", 0.01f);
+                   
+                }
+                else
+                {
+                    SnowBallCount = SnowBallCount - 1;
+                }
+                Invoke("Shifting", 3f);
             }
             Debug.Log(SnowBallCount);
         }
@@ -94,7 +106,7 @@ public class SnowBallThrowing : MonoBehaviour
             isUp = false;
             isDown = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isRight && isNotMoving && SnowBallCount > 2)
+        if (Input.GetKeyDown(KeyCode.Space) && isRight && isNotMoving && SnowBallCount > 2 && isShifting == false)
         {
             GameObject snowball = Instantiate(snowPrefab, transform.position, Quaternion.identity);
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(snowVelocityinXdirectionLeftAndRight, snowVelocityinYdirectionLeftAndRight);
@@ -102,7 +114,7 @@ public class SnowBallThrowing : MonoBehaviour
             Destroy(snowball, snowDisappear);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isLeft && isNotMoving && SnowBallCount > 2)
+        if (Input.GetKeyDown(KeyCode.Space) && isLeft && isNotMoving && SnowBallCount > 2 && isShifting == false)
             {
             GameObject snowball = Instantiate(snowPrefab, transform.position, Quaternion.identity);
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(snowVelocityinXdirectionLeftAndRight * -1f, snowVelocityinYdirectionLeftAndRight);
@@ -124,7 +136,7 @@ public class SnowBallThrowing : MonoBehaviour
             isUp = false;
             isDown = true;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isUp && isNotMoving && SnowBallCount > 2)
+        if (Input.GetKeyDown(KeyCode.Space) && isUp && isNotMoving && SnowBallCount > 2 && isShifting == false)
         {
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown);
@@ -133,7 +145,7 @@ public class SnowBallThrowing : MonoBehaviour
             //Destroy(snowballUpAndDown, snowDisappear);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isDown && isNotMoving && SnowBallCount > 2)
+        if (Input.GetKeyDown(KeyCode.Space) && isDown && isNotMoving && SnowBallCount > 2 && isShifting == false)
         {
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown * -1f);
@@ -142,5 +154,13 @@ public class SnowBallThrowing : MonoBehaviour
             //Destroy(snowballUpAndDown, snowDisappear);
         }
 
+    }
+    public void ShiftingTrue()
+    {
+        isShifting = true;
+    }
+    public void Shifting()
+    {
+        isShifting = false;
     }
 }
