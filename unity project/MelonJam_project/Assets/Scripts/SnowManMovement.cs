@@ -19,7 +19,7 @@ public class SnowManMovement : MonoBehaviour
     public GameObject Tree;
     public bool isVisible;
     public float SnowBallCount;
-    public float SnowCount;
+
 
 
     // Start is called before the first frame update
@@ -27,8 +27,7 @@ public class SnowManMovement : MonoBehaviour
     {
         canMove = true;
         isVisible = true;
-        SnowBallCount = 2;
-        SnowCount = 0;
+        SnowBallCount = 0;
     }
 
     // Update is called once per frame
@@ -81,17 +80,13 @@ public class SnowManMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.X))
         {
-            if(SnowBallCount <= 2)
-            {
-                SnowBallCount = 4;
-            }
-            else if(SnowBallCount < 10)
+            if (SnowBallCount <= 8)
             {
                 SnowBallCount = SnowBallCount + 2;
             }
             else
             {
-                SnowBallCount = 10;
+                SnowBallCount = 8;
             }
 
             Debug.Log(SnowBallCount);
@@ -119,16 +114,9 @@ public class SnowManMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           
             if (SnowBallCount >= 1)
             {
                 SnowBallCount = SnowBallCount - 1;
-                SnowCount = SnowCount + 1;
-            }
-            if(SnowCount == 2 && SnowBallCount >= 2)
-            {
-                Invoke("Shake", 1);
-                SnowCount = 0;
             }
             Debug.Log(SnowBallCount);
         }
