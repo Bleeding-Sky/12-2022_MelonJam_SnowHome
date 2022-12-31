@@ -8,6 +8,8 @@ public class SeesawPuzzleCompletionCheck : MonoBehaviour
     public GameObject seesaw;
     BoxCollider2D interactableField;
     bool isInteractable;
+    public GameObject hatTree;
+    public Sprite noHatTreeSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class SeesawPuzzleCompletionCheck : MonoBehaviour
         {
             if (Input.GetKeyDown("e"))
             {
+                hatTree.GetComponent<SpriteRenderer>().sprite = noHatTreeSprite;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<ClothingHandler>().hasHat = true;
             }
         }

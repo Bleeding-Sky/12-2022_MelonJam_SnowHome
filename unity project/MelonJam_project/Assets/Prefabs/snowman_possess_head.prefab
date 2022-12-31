@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   player: {fileID: 0}
-  newLumpPrefab: {fileID: 8788042752456254388, guid: ae760936cf11120488340d0a24925cf1, type: 3}
+  newLumpPrefab: {fileID: 5142494861255068409, guid: ae760936cf11120488340d0a24925cf1, type: 3}
 --- !u!58 &5803449834514706911
 CircleCollider2D:
   m_ObjectHideFlags: 0
