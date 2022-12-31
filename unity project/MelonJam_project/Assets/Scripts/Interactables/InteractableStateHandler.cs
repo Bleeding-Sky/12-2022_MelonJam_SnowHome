@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceSnowInteraction : MonoBehaviour
+public class InteractableStateHandler : MonoBehaviour
 {
-    CircleCollider2D interactionRadius;
+    public int objectState;
+    /*
+     * 0 = no snow
+     * 1 = a little snow
+     * 2 = full of snow
+     */
 
     // Start is called before the first frame update
     void Start()
     {
-        interactionRadius = GetComponent<CircleCollider2D>();
+        objectState = 0;
     }
 
     // Update is called once per frame
