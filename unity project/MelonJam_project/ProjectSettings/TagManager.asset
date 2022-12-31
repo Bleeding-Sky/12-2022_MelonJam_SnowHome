@@ -8,6 +8,7 @@ TagManager:
   - SnowBall
   - SnowFella
   - Gutter
+  - snowPossession
   layers:
   - Default
   - TransparentFX
