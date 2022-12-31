@@ -14,7 +14,7 @@ public class DepthDortSnowBall : MonoBehaviour
     private float timer;
     private float timerMax = .1f;
     private Renderer myRenderer;
-    public Vector3 position;
+    public float initialYLocation;
 
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class DepthDortSnowBall : MonoBehaviour
         if (timer <= 0f)
         {
             timer = timerMax;
-            myRenderer.sortingOrder = (int)(sortingOrderBase - position.y - offset);
+            myRenderer.sortingOrder = (int)(sortingOrderBase - initialYLocation - offset);
             if (runOnlyOnce)
             {
                 Destroy(this);
