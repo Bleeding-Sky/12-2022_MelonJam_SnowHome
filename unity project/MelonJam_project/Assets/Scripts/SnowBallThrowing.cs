@@ -53,6 +53,7 @@ public class SnowBallThrowing : MonoBehaviour
         {
             GameObject snowball = Instantiate(snowPrefab, transform.position, Quaternion.identity);
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(snowVelocityinXdirectionLeftAndRight, snowVelocityinYdirectionLeftAndRight);
+            snowball.GetComponent<DepthDortSnowBall>().position = transform.position;
             Destroy(snowball, snowDisappear);
         }
 
@@ -60,6 +61,7 @@ public class SnowBallThrowing : MonoBehaviour
             {
             GameObject snowball = Instantiate(snowPrefab, transform.position, Quaternion.identity);
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(snowVelocityinXdirectionLeftAndRight * -1f, snowVelocityinYdirectionLeftAndRight);
+            snowball.GetComponent<DepthDortSnowBall>().position = transform.position;
             Destroy(snowball, snowDisappear);
         }
         //Throwing a snowball either up or down
@@ -82,6 +84,7 @@ public class SnowBallThrowing : MonoBehaviour
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown);
             snowballUpAndDown.GetComponent<SnowballLogic>().throwTimer = snowDisappear;
+            snowballUpAndDown.GetComponent<DepthDortSnowBall>().position = transform.position;
             //Destroy(snowballUpAndDown, snowDisappear);
         }
 
@@ -90,6 +93,7 @@ public class SnowBallThrowing : MonoBehaviour
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown * -1f);
             snowballUpAndDown.GetComponent<SnowballLogic>().throwTimer = snowDisappear;
+            snowballUpAndDown.GetComponent<DepthDortSnowBall>().position = transform.position;
             //Destroy(snowballUpAndDown, snowDisappear);
         }
 

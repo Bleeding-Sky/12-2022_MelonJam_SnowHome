@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6562927400331641123}
   - component: {fileID: -7118115752924765180}
   - component: {fileID: 1125629620064041413}
+  - component: {fileID: -5038880096568927935}
   m_Layer: 0
   m_Name: SnowBallThrowUpAndDown
   m_TagString: Untagged
@@ -137,3 +138,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwTimer: 0
+  currentTimer: 0
+--- !u!114 &-5038880096568927935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391219539721801885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08ed3e09d41ef44da586cdd7dae1361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
