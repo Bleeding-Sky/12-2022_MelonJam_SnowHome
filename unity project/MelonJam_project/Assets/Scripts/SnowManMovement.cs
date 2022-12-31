@@ -23,7 +23,7 @@ public class SnowManMovement : MonoBehaviour
     public float SnowBallCount;
     public bool isNotMoving;
     public bool isShifting;
-
+    SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,7 @@ public class SnowManMovement : MonoBehaviour
         isVisible = true;
         SnowBallCount = 4;
         isShifting = false;
+        sr = SnowFella.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -191,6 +192,7 @@ public class SnowManMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Invisible();
         if (collision.gameObject.CompareTag("RollingTrigger"))
         {
             Debug.Log("Roll!");
@@ -198,7 +200,10 @@ public class SnowManMovement : MonoBehaviour
             canMove = false;
             isVisible = false;
             MyRigidBody.velocity = new Vector2(0,0);
+            
             Invoke("beginMovement", 8);
+            
+            
 
         }
     }
@@ -223,6 +228,16 @@ public class SnowManMovement : MonoBehaviour
     {
         isShifting = false;
     }
+
+    public void Invisible()
+    {
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
+    }
+    public void Visible()
+    {
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+    }
+
 
 }
 
