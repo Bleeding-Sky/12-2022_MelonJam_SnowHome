@@ -192,10 +192,11 @@ public class SnowManMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Invisible();// making sprites invisible
+        // making sprites invisible
         Debug.Log("MOvement script made snowman invisible");
         if (collision.gameObject.CompareTag("RollingTrigger"))
         {
+            Invisible();
             Debug.Log("Roll!");
             SnowFella.transform.position = new Vector2(Tree.transform.position.x + .1f, Tree.transform.position.y - .05f);
             canMove = false;
@@ -232,7 +233,7 @@ public class SnowManMovement : MonoBehaviour
 
     public void Invisible()
     {
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
+        SnowFella.GetComponent<SpriteRenderer>().color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
     }
     public void Visible()
     {
