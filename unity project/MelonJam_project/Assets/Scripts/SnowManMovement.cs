@@ -82,13 +82,20 @@ public class SnowManMovement : MonoBehaviour
         {
             if (SnowBallCount <= 8)
             {
-                SnowBallCount = SnowBallCount + 2;
-            }
-            else
-            {
-                SnowBallCount = 8;
-            }
+                if (SnowBallCount % 2 == 0)
+                {
+                    SnowBallCount = SnowBallCount + 2;
 
+                }
+                else
+                {
+                    SnowBallCount = SnowBallCount + 3;
+                }
+            }
+            else if(SnowBallCount <= 2)
+            {
+                SnowBallCount = 2;
+            }
             Debug.Log(SnowBallCount);
             Debug.Log("Gather!");
             Invoke("Gather", 1);
@@ -100,12 +107,24 @@ public class SnowManMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (SnowBallCount >= 2)
-            {
+            if (SnowBallCount >= 4)
+            { 
+               if(SnowBallCount % 2 == 0)
+                {
+                    SnowBallCount = SnowBallCount - 2;
+                    Debug.Log(SnowBallCount);
+                }
+               else
+                {
+                    SnowBallCount = SnowBallCount - 1;
+                    Debug.Log(SnowBallCount);
+                }
                 SnowBallCount = SnowBallCount - 2;
                 Debug.Log("Shake!");
                 Invoke("Shake", 1);
+
             }
+            
         }
         else
         {
@@ -114,9 +133,13 @@ public class SnowManMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (SnowBallCount >= 1)
+            if (SnowBallCount >= 2)
             {
                 SnowBallCount = SnowBallCount - 1;
+            }
+            else
+            {
+                SnowBallCount = 2;
             }
             Debug.Log(SnowBallCount);
         }
