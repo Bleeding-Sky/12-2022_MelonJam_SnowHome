@@ -48,13 +48,26 @@ public class SnowBallThrowing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
 
-            if (SnowBallCount == 8)
+            if (SnowBallCount <= 8)
             {
                 SnowBallCount = SnowBallCount + 2;
             }
+            else
+            {
+                SnowBallCount = 8;
+            }
+            Debug.Log(SnowBallCount);
         }
-        //Throwing a snowball either left or right
-        if(horizontalDirection > 0f)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (SnowBallCount >= 1)
+            {
+                SnowBallCount = SnowBallCount - 1;
+            }
+            Debug.Log(SnowBallCount);
+        }
+            //Throwing a snowball either left or right
+            if (horizontalDirection > 0f)
         {
             isRight = true;
             isLeft = false;
