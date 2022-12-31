@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1450807794671395254}
   m_Layer: 0
   m_Name: SnowBallThrow
-  m_TagString: Untagged
+  m_TagString: SnowBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,4 +139,4 @@ MonoBehaviour:
   sortingOrderBase: 500
   offset: 0
   runOnlyOnce: 0
-  position: {x: 0, y: 0, z: 0}
+  initialYLocation: 0

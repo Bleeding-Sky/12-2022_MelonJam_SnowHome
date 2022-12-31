@@ -17,6 +17,7 @@ public class SnowBallThrowing : MonoBehaviour
     public bool isLeft;
     public bool isUp;
     public bool isDown;
+    public bool isNotMoving = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,16 @@ public class SnowBallThrowing : MonoBehaviour
         horizontalDirection = Input.GetAxisRaw("Horizontal");
         verticalDirection = Input.GetAxisRaw("Vertical");
 
+        if (horizontalDirection == 0 && verticalDirection == 0)
+        {
+            isNotMoving = true;
+        }
+        else
+        {
+            isNotMoving = false;
+        }
+
+
         //Throwing a snowball either left or right
         if(horizontalDirection > 0f)
         {
@@ -49,7 +60,7 @@ public class SnowBallThrowing : MonoBehaviour
             isUp = false;
             isDown = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isRight)
+        if (Input.GetKeyDown(KeyCode.Space) && isRight && isNotMoving)
         {
             GameObject snowball = Instantiate(snowPrefab, transform.position, Quaternion.identity);
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(snowVelocityinXdirectionLeftAndRight, snowVelocityinYdirectionLeftAndRight);
@@ -57,7 +68,7 @@ public class SnowBallThrowing : MonoBehaviour
             Destroy(snowball, snowDisappear);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isLeft)
+        if (Input.GetKeyDown(KeyCode.Space) && isLeft && isNotMoving)
             {
             GameObject snowball = Instantiate(snowPrefab, transform.position, Quaternion.identity);
             snowball.GetComponent<Rigidbody2D>().velocity = new Vector2(snowVelocityinXdirectionLeftAndRight * -1f, snowVelocityinYdirectionLeftAndRight);
@@ -79,7 +90,7 @@ public class SnowBallThrowing : MonoBehaviour
             isUp = false;
             isDown = true;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isUp)
+        if (Input.GetKeyDown(KeyCode.Space) && isUp && isNotMoving)
         {
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown);
@@ -88,7 +99,7 @@ public class SnowBallThrowing : MonoBehaviour
             //Destroy(snowballUpAndDown, snowDisappear);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isDown)
+        if (Input.GetKeyDown(KeyCode.Space) && isDown && isNotMoving)
         {
             GameObject snowballUpAndDown = Instantiate(snowPrefabUpandDown, transform.position, Quaternion.identity);
             snowballUpAndDown.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, snowVelocityinUpandDown * -1f);

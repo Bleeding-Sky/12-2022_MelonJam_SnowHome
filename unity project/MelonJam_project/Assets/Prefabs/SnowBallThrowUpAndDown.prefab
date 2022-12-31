@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5038880096568927935}
   m_Layer: 0
   m_Name: SnowBallThrowUpAndDown
-  m_TagString: Untagged
+  m_TagString: SnowBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,3 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08ed3e09d41ef44da586cdd7dae1361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sortingOrderBase: 500
+  offset: 0
+  runOnlyOnce: 0
+  initialYLocation: 0

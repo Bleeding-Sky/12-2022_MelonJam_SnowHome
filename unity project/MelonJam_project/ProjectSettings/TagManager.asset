@@ -5,8 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - RollingTrigger
+<<<<<<< Updated upstream
   - SnowFella
   - Seesaw
+=======
+  - TreeSnowTrigger
+  - SnowBall
+  - Tree
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

@@ -265,6 +265,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.34, y: 0.12}
   m_EdgeRadius: 0
+--- !u!1 &1130584625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130584626}
+  - component: {fileID: 1130584627}
+  m_Layer: 0
+  m_Name: TreeSnowFallCollider
+  m_TagString: Tree
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1130584626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130584625}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.056494117, y: 0.20949963, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2023361356}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1130584627
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130584625}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.33}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.19, y: 0.28}
+  m_EdgeRadius: 0.06
 --- !u!1 &1372004473
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +600,7 @@ GameObject:
   - component: {fileID: 1514291200}
   m_Layer: 0
   m_Name: SnowFella
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -628,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514291188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.754, y: 0.036, z: 0}
+  m_LocalPosition: {x: -1.442, y: -0.562, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -684,8 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3000323c697815147a9c9e079fb30bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
-  moveSpeed: 2
 --- !u!114 &1514291197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,6 +766,7 @@ MonoBehaviour:
   isLeft: 0
   isUp: 0
   isDown: 0
+  isNotMoving: 1
 --- !u!95 &1514291198
 Animator:
   serializedVersion: 4
@@ -773,8 +830,9 @@ GameObject:
   - component: {fileID: 2023361355}
   - component: {fileID: 2023361357}
   - component: {fileID: 2023361360}
-  - component: {fileID: 2023361361}
   - component: {fileID: 2023361362}
+  - component: {fileID: 2023361363}
+  - component: {fileID: 2023361365}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -823,12 +881,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1172118fcc43ab842b3be4fece7c9530, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cd165b0846e4144487ceeed22709b65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.64}
+  m_Size: {x: 0.8, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -842,10 +900,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023361353}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6449, y: -0.9533, z: 0}
+  m_LocalPosition: {x: -0.738, y: -0.414, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1130584626}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -882,22 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50e918fb7578c944ad107fe13e50009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortingOrderBase: 500
-  offset: 0
-  runOnlyOnce: 0
---- !u!114 &2023361361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023361353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50e918fb7578c944ad107fe13e50009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortingOrderBase: 500
+  sortingOrderBase: 600
   offset: 0
   runOnlyOnce: 0
 --- !u!70 &2023361362
@@ -913,6 +957,40 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0065298094, y: -0.0034125815}
-  m_Size: {x: 0.26533484, y: 0.0731751}
+  m_Offset: {x: 0.01, y: -0.03}
+  m_Size: {x: 0.16, y: 0.15}
   m_Direction: 1
+--- !u!95 &2023361363
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023361353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c8f8b99d2ab8434f8f533d808a41508, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2023361365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023361353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad166f82a08f1d42910aeea5a502fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SnowBall: {fileID: 1514291194}
+  treeAnimation: {fileID: 2023361363}
