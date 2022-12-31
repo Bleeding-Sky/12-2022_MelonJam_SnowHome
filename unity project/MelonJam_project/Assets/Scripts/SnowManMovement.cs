@@ -24,6 +24,8 @@ public class SnowManMovement : MonoBehaviour
     public bool isNotMoving;
     public bool isShifting;
     SpriteRenderer sr;
+    public Animator HillandTreeAnimator;
+    public GameObject TreeHide;
 
     // Start is called before the first frame update
     void Start()
@@ -199,11 +201,15 @@ public class SnowManMovement : MonoBehaviour
             Invisible();
             Debug.Log("Roll!");
             SnowFella.transform.position = new Vector2(Tree.transform.position.x + .1f, Tree.transform.position.y - .05f);
+            HillandTreeAnimator.SetBool("isRolling", true);
+            Invoke("Hide", 0);
+            Invoke("Appear", 3f);
+            Invoke("Rolling", 3f);
             canMove = false;
             isVisible = false;
             MyRigidBody.velocity = new Vector2(0,0);
             
-            Invoke("beginMovement", 8);
+            Invoke("beginMovement", 3f);
             
             
 
@@ -230,6 +236,10 @@ public class SnowManMovement : MonoBehaviour
     {
         isShifting = false;
     }
+    public void Rolling()
+    {
+        HillandTreeAnimator.SetBool("isRolling", false);
+    }
 
     public void Invisible()
     {
@@ -239,7 +249,14 @@ public class SnowManMovement : MonoBehaviour
     {
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
     }
-
+    public void Hide()
+    {
+        SnowFella.transform.position = new Vector2(-.25f, .38f);
+    }
+    public void Appear()
+    {
+        SnowFella.transform.position = new Vector2(-1.2f, .3f);
+    }
 
 }
 
