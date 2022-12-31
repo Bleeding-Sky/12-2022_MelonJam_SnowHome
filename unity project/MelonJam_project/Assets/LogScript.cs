@@ -39,7 +39,7 @@ public class LogScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
             Debug.Log("Going through the pipe!");
-            Invoke("GoUpLog", .05f);
+            Invoke("GoUpLog", .01f);
             
     }
     

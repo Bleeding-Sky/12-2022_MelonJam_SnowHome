@@ -5,14 +5,14 @@ using UnityEngine;
 public class LogDownScript : MonoBehaviour
 {
     public Animator logAnimator;
-    SpriteRenderer sr;
+    SpriteRenderer sprite;
     public GameObject SnowMan;
     public GameObject Log;
     public bool isVisible = true;
     // Start is called before the first frame update
     void Start()
     {
-        sr = SnowMan.GetComponent<SpriteRenderer>();
+        sprite = SnowMan.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -20,14 +20,14 @@ public class LogDownScript : MonoBehaviour
     {
         if (isVisible == false)
         {
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
 
             Invoke("Visible", 3.875f);
             SnowMan.transform.position = new Vector2(Log.transform.position.x - .012f, Log.transform.position.y - .365f);
         }
         else
         {
-            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
             isVisible = true;
         }
     }
@@ -36,6 +36,7 @@ public class LogDownScript : MonoBehaviour
     {
         Debug.Log("Going through the pipe!");
         Invoke("GoDownLog", .05f);
+      
     }
 
 
