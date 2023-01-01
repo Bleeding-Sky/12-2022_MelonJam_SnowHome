@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class sceneHandler : MonoBehaviour
 {
-    float scene1Timer = 10;
+   public float scene1Timer;
     float elapsedTime = 0;
     public Scene intro;
     public Scene game;

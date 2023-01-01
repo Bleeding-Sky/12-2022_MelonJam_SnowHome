@@ -251,11 +251,11 @@ public class SnowManMovement : MonoBehaviour
     }
     public void Hide()
     {
-        SnowFella.transform.position = new Vector2(-.25f, .38f);
+        SnowFella.transform.position = new Vector2(-1.936f, 6.21f);
     }
     public void Appear()
     {
-        SnowFella.transform.position = new Vector2(-1.2f, .3f);
+        SnowFella.transform.position = new Vector2(-1.803f, 6.512f);
     }
 
 }
