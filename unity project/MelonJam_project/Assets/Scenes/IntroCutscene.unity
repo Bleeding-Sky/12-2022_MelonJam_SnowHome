@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sceneManager 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1227087946207289022, guid: 6edf589b16410544989bb4b84924eb04, type: 3}
+      propertyPath: scene1Timer
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1227087946207289023, guid: 6edf589b16410544989bb4b84924eb04, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -289,7 +293,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775114170}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: 0b4abed2ae4b73e4d8416c5bbef158d1, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

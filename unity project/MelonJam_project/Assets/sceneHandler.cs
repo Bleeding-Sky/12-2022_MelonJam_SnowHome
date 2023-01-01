@@ -15,7 +15,6 @@ public class sceneHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.LoadScene("IntroCutscene");
         intro = SceneManager.GetSceneByName("IntroCutscene");
         game = SceneManager.GetSceneByName("SampleScene");
         ending = SceneManager.GetSceneByName("EndingCutscene");
@@ -41,6 +40,7 @@ public class sceneHandler : MonoBehaviour
                 player.GetComponent<ClothingHandler>().hasPipe)
             {
                 SceneManager.LoadScene("EndingCutscene");
+                Debug.Log("Loading ending cutscene");
             }
         }
     }
