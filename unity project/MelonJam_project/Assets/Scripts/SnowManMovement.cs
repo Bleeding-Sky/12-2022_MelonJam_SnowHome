@@ -35,12 +35,15 @@ public class SnowManMovement : MonoBehaviour
         SnowBallCount = 4;
         isShifting = false;
         sr = SnowFella.GetComponent<SpriteRenderer>();
+        Invoke("introStay", 0);
+        Invoke("Reappear", 15f);
+        Invoke("introMove", 19f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         float hMove = Input.GetAxisRaw("Horizontal");
         float vMove = Input.GetAxisRaw("Vertical");
 
@@ -86,7 +89,7 @@ public class SnowManMovement : MonoBehaviour
         animator.SetFloat("Horizontal", hMove);
         animator.SetFloat("Vertical", vMove);
 
-        if(hMove == 0 && vMove == 0)
+        if (hMove == 0 && vMove == 0)
         {
             animator.SetBool("isMoving", false);
         }
@@ -95,7 +98,7 @@ public class SnowManMovement : MonoBehaviour
             animator.SetBool("isMoving", true);
         }
 
-        if(Input.GetKeyDown(KeyCode.X) && isNotMoving == true && isShifting == false)
+        if (Input.GetKeyDown(KeyCode.X) && isNotMoving == true && isShifting == false)
         {
             if (SnowBallCount <= 8)
             {
@@ -109,7 +112,7 @@ public class SnowManMovement : MonoBehaviour
                     SnowBallCount = SnowBallCount + 3;
                 }
             }
-            else if(SnowBallCount <= 2)
+            else if (SnowBallCount <= 2)
             {
                 SnowBallCount = 2;
             }
@@ -126,13 +129,13 @@ public class SnowManMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && isNotMoving == true && isShifting == false)
         {
             if (SnowBallCount >= 4)
-            { 
-               if(SnowBallCount % 2 == 0)
+            {
+                if (SnowBallCount % 2 == 0)
                 {
                     SnowBallCount = SnowBallCount - 2;
                     Debug.Log(SnowBallCount);
                 }
-               else
+                else
                 {
                     SnowBallCount = SnowBallCount - 1;
                     Debug.Log(SnowBallCount);
@@ -142,7 +145,7 @@ public class SnowManMovement : MonoBehaviour
                 Invoke("Shake", 1);
                 Invoke("Shifting", 3f);
             }
-            
+
         }
         else
         {
@@ -166,7 +169,7 @@ public class SnowManMovement : MonoBehaviour
                 }
 
             }
-         
+
             Debug.Log(SnowBallCount);
         }
 
@@ -174,7 +177,7 @@ public class SnowManMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+
     }
 
 
@@ -207,11 +210,11 @@ public class SnowManMovement : MonoBehaviour
             Invoke("Rolling", 3f);
             canMove = false;
             isVisible = false;
-            MyRigidBody.velocity = new Vector2(0,0);
-            
+            MyRigidBody.velocity = new Vector2(0, 0);
+
             Invoke("beginMovement", 3f);
-            
-            
+
+
 
         }
     }
@@ -258,5 +261,21 @@ public class SnowManMovement : MonoBehaviour
         SnowFella.transform.position = new Vector2(-1.803f, 6.512f);
     }
 
+    public void introStay()
+    {
+        canMove = false;
+        SnowFella.GetComponent<SpriteRenderer>().enabled = false;
+    }
+    public void introMove()
+    {
+        canMove = true;
+        
+    }
+    public void Reappear()
+    {
+        SnowFella.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
 }
+
 
