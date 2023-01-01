@@ -203,10 +203,10 @@ public class SnowManMovement : MonoBehaviour
         {
             Invisible();
             Debug.Log("Roll!");
-            SnowFella.transform.position = new Vector2(Tree.transform.position.x + .1f, Tree.transform.position.y - .05f);
+        
             HillandTreeAnimator.SetBool("isRolling", true);
-            Invoke("Hide", 0);
-            Invoke("Appear", 3f);
+            Invoke("Visible", 3.15f);
+            Invoke("Appear", 0f);
             Invoke("Rolling", 3f);
             canMove = false;
             isVisible = false;
@@ -246,11 +246,11 @@ public class SnowManMovement : MonoBehaviour
 
     public void Invisible()
     {
-        SnowFella.GetComponent<SpriteRenderer>().color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
+        SnowFella.GetComponent<SpriteRenderer>().enabled = false;
     }
     public void Visible()
     {
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+        SnowFella.GetComponent<SpriteRenderer>().enabled = true;
     }
     public void Hide()
     {
@@ -258,7 +258,7 @@ public class SnowManMovement : MonoBehaviour
     }
     public void Appear()
     {
-        SnowFella.transform.position = new Vector2(-1.803f, 6.512f);
+        SnowFella.transform.position = new Vector2(-2.687f, 6.353f);
     }
 
     public void introStay()
