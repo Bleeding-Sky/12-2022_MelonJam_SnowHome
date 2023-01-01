@@ -201,12 +201,12 @@ public class SnowManMovement : MonoBehaviour
         Debug.Log("MOvement script made snowman invisible");
         if (collision.gameObject.CompareTag("RollingTrigger"))
         {
-            Invisible();
+            SnowFella.GetComponent<SpriteRenderer>().enabled = false;
             Debug.Log("Roll!");
             SnowFella.transform.position = new Vector2(Tree.transform.position.x + .1f, Tree.transform.position.y - .05f);
             HillandTreeAnimator.SetBool("isRolling", true);
-            Invoke("Hide", 0);
-            Invoke("Appear", 3f);
+            Invoke("Reappear", 3.15f);
+            Invoke("Appear", 0);
             Invoke("Rolling", 3f);
             canMove = false;
             isVisible = false;
@@ -258,7 +258,7 @@ public class SnowManMovement : MonoBehaviour
     }
     public void Appear()
     {
-        SnowFella.transform.position = new Vector2(-1.803f, 6.512f);
+        SnowFella.transform.position = new Vector2(-2.646f, 6.353f);
     }
 
     public void introStay()
